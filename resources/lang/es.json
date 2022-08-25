@@ -1,0 +1,16 @@
+{
+    "id_number": "Numero de identidad",
+    "id_number_placeholder": "Ingrese el numero de identidad",
+    "The selected id number is invalid.": "El numero de identidad seleccionado es invalido.",
+    "The selected id number is already in use.": "El numero de identidad seleccionado ya esta en uso.",
+    "continue": "Continuar",
+    "cancel": "Cancelar",
+    "home": "Inicio",
+    "pending": "Pendiente",
+    "approved": "Aprobado",
+    "rejected": "Rechazado",
+    "date": "Fecha",
+    "profile": "Perfil",
+    "history": "Historial",
+    "logout": "Cerrar sesión"
+}
