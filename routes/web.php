@@ -10,8 +10,11 @@ Route::get('/', function () {
     return Inertia::render('App');
 });
 Route::post('/employees/validate', [EmployeeController::class, 'validateEmployee'])->name('employees.validate');
-Route::post('/employees/logout', [EmployeeController::class, 'logoutEmployee'])->name('employees.logout');
-Route::resource('actions', HRActionController::class);
+Route::group(['middleware' => 'employee_auth'], function(){
+	Route::post('/employees/logout', [EmployeeController::class, 'logoutEmployee'])->name('employees.logout');
+	Route::resource('actions', HRActionController::class);	
+});
+
 
 
 
