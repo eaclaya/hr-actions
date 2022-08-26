@@ -8,7 +8,10 @@ const hasItems = ref(false);
 const selectedItems = ref({});
 if (props.items) {
     props.items.map((item) => {
-        selectedItems.value[item.id] = true;
+        selectedItems.value[item.action_type_id] = {
+            selected: true,
+            description: item.description
+        }
         hasItems.value = true;
     });
 }
@@ -29,7 +32,7 @@ if (props.items) {
                     <input
                         type="checkbox"
                         :name="`selectedTypes[${_type.id}][selected]`"
-                        :checked="selectedItems[_type.id] === true"
+                        :checked="selectedItems[_type.id]"
                         :disabled="hasItems"
                     />
                     <label class="text-sm lg:text-md">{{ _type.name }}</label>
@@ -41,7 +44,7 @@ if (props.items) {
                         v-if="_type.has_comments"
                         class="border-0 border-b border-gray-400"
                         :name="`selectedTypes[${_type.id}][comments]`"
-                        :checked="selectedItems[_type.id] === true"
+                        :value="selectedItems[_type.id] ?  selectedItems[_type.id].description : '' "
                         :disabled="hasItems"
                     />
                 </div>

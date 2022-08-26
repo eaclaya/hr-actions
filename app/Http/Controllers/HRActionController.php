@@ -52,13 +52,16 @@ class HRActionController extends Controller
             $action->save();
         }
         foreach($request->selectedTypes as $key => $selectedType){
-            HRActionEmployeeSelectedItem::create([
-                'employee_id' => $action->employee_id,
-                'account_id' => $action->account_id,
-                'action_id' => $action->id,
-                'description' => isset($selectedType['comments']) ? $selectedType['comments'] : '',
-                'action_type_id' => $key,
-            ]);
+            if(isset($selectedType['selected'])){
+                
+                HRActionEmployeeSelectedItem::create([
+                    'employee_id' => $action->employee_id,
+                    'account_id' => $action->account_id,
+                    'action_id' => $action->id,
+                    'description' => isset($selectedType['comments']) ? $selectedType['comments'] : '',
+                    'action_type_id' => $key,
+                ]);
+            }
         }
         return redirect()->route('actions.index');
     }

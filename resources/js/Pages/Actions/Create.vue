@@ -13,6 +13,7 @@ const submitForm = async () => {
     const formData = new FormData(form);
     formData.append("employee_id", props.employee.id);
     formData.append("account_id", props.employee.account_id);
+    
     const { data } = await Inertia.post("/actions", formData);
     return data;
 };
