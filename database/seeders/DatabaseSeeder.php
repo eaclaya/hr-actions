@@ -119,6 +119,11 @@ class DatabaseSeeder extends Seeder
                         'label' => 'Sin notificacion por mas de 48 horas. Anexar carta de abandono de labores',
                         'has_comments' => 0
                     ],
+                    [
+                        'name' => 'No aprobo el periodo de prueba',
+                        'label' => null,
+                        'has_comments' => 0
+                    ],
                 ]
             ],
         ];

@@ -9,6 +9,7 @@ use App\Http\Resources\EmployeeResource;
 use App\Models\HRActionCategory;
 use App\Models\HRActionEmployee;
 use App\Models\HRActionEmployeeSelectedItem;
+use App\Events\ActionCreated;
 use Illuminate\Http\Request;
 
 class HRActionController extends Controller
@@ -39,7 +40,9 @@ class HRActionController extends Controller
     }
 
     public function store(StoreActionRequest $request){
-        $action = HRActionEmployee::create($request->validated());
+        $validated = $request->validated();
+        $validated['account_id'] = isset($validated['account_id']) ?? 1;
+        $action = HRActionEmployee::create($validated);
         if($request->file('images')){
             $files = [];
             foreach($request->file('images') as $image){
@@ -63,6 +66,7 @@ class HRActionController extends Controller
                 ]);
             }
         }
+        ActionCreated::dispatch($action);
         return redirect()->route('actions.index');
     }
 }
