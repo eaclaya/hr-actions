@@ -29,6 +29,7 @@ class StoreActionRequest extends FormRequest
             'selectedTypes' => 'required',
             'employee_id' => 'required',
             'account_id' => 'required',
+            'comments' => 'nullable',
         ];
     }
 }

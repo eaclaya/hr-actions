@@ -32,7 +32,7 @@ class SendActionEmail
             'rrhhkmmotos@gmail.com',
             'garridoosman@gmail.com',
             'ealexander.zm@gmail.com',
-	    'rrhncapacitacioneskmmotos@gmail.com',
+	        'rrhncapacitacioneskmmotos@gmail.com',
             'rosicardenas54@gmail.com',
             'jefedeventaskmmotos@gmail.com',
             'contadorkmmotos@gmail.com',
