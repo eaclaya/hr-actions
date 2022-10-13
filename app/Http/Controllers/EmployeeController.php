@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\EmployeeNumberRequest;
-use App\Http\Resources\ActionEmployeeResource;
-use App\Http\Resources\EmployeeResource;
 use App\Models\Employee;
-use App\Models\HRActionEmployee;
+
 use Illuminate\Http\Request;
-use Hash;
+
 class EmployeeController extends Controller
 {
    
     public function validateEmployee(EmployeeNumberRequest $request){
-        $employee = Employee::select('id', 'id_number')->where('id_number', $request->id_number)->first();
+        $employee = Employee::select('id', 'id_number', 'account_id')
+                            ->where('id_number', $request->id_number)
+                            ->first();
         request()->session()->put('employee', $employee);
         return redirect()->route('actions.index');
     }

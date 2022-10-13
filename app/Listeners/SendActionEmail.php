@@ -2,11 +2,12 @@
 
 namespace App\Listeners;
 
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 use App\Events\ActionCreated;
 use App\Mail\ActionEmail;
-use Mail;
+use Exception;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+
 class SendActionEmail
 {
     /**
@@ -37,7 +38,10 @@ class SendActionEmail
             'jefedeventaskmmotos@gmail.com',
             'contadorkmmotos@gmail.com',
         ];
-        
-        Mail::to($recipients)->send(new ActionEmail($actionEmployee));
+        try{
+            Mail::to($recipients)->send(new ActionEmail($actionEmployee));
+        }catch(Exception $e){
+            Log::error($e->getMessage());
+        }
     }
 }

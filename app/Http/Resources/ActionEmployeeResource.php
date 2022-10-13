@@ -20,6 +20,9 @@ class ActionEmployeeResource extends JsonResource
             'status' => $this->status,
             'from_date' => $this->from_date,
             'to_date' => $this->to_date,
+            'comments' => $this->comments,
+            'images' => $this->images,
+            'rejected_reason' => $this->rejected_reason,
             'items' => $this->items,
         ];
     }
