@@ -15,6 +15,11 @@
                     {{ $employee->last_name }}
                 </p>
                 <p class="text-sm lg:text-md">Puesto: {{ $employee->profile }}</p>
+
+                <p style="width: 100%; display: inline-block; vertical-align: middle">
+                            Tienda: {{ isset($employee->account->name)? $employee->account->name : DB::table('accounts')->where('id', $employee->account_id)->first()->name }} 
+                </p>
+
             </div>
 
              <ul class="flex flex-col px-2">
